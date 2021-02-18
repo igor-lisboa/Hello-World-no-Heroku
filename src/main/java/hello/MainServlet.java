@@ -17,6 +17,6 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author @igor-lisboa
  */
-@WebServlet("/")
+@WebServlet("/main")
 public class MainServlet extends HttpServlet {
 }
