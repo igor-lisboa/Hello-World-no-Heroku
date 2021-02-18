@@ -9,3 +9,6 @@
 # Adição no projeto
 * Foi adicionado o servlet Contador
     * Esse servlet testa o conceito de que por padrão cada servlet tem apenas 1 instância e que a mesma é compartilhada por todas as threads.
+
+# Fonte interessante para estudo
+* https://www.caelum.com.br/apostila-java-web/servlets
