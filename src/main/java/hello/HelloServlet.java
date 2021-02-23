@@ -7,6 +7,7 @@ package hello;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,13 +22,18 @@ import javax.servlet.http.HttpServletResponse;
 public class HelloServlet extends HttpServlet {
 
     /**
+     *
+     */
+    private static final long serialVersionUID = 3250680120495201269L;
+
+    /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -37,7 +43,7 @@ public class HelloServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet HelloServlet</title>");            
+            out.println("<title>Servlet HelloServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet HelloServlet at " + request.getContextPath() + "</h1>");
@@ -46,42 +52,36 @@ public class HelloServlet extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the
+    // + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String msg = "";
-        
+
         String lang = request.getParameter("lang");
-        if(lang==null)
+        if (lang == null)
             lang = "pt";
-        switch(lang){
-            case "pt":
-                msg = "Alô, ";
-                break;
-            case "en":
-                msg = "Hello, ";
-                break;
-            case "fr":
-                msg = "Bonjour, ";
-                break;
-        }
-        
+
+        MessageBean msgBean = new MessageBean(lang);
+
+        msg = msgBean.getMsg();
+
         String nome = request.getParameter("nome");
 
-        if(nome==null)
+        if (nome == null)
             nome = "Fulano";
-        
-        msg = msg+nome+"!";
+
+        msg = msg + nome + "!";
 
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -89,7 +89,7 @@ public class HelloServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet HelloServlet</title>");            
+            out.println("<title>Servlet HelloServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet HelloServlet</h1>");
@@ -102,40 +102,30 @@ public class HelloServlet extends HttpServlet {
     /**
      * Handles the HTTP <code>POST</code> method.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String msg = "";
-        
+
         String lang = request.getParameter("lang");
-        if(lang==null)
+        if (lang == null)
             lang = "pt";
-        switch(lang){
-            case "pt":
-                msg = "Alô, ";
-                break;
-            case "en":
-                msg = "Hello, ";
-                break;
-            case "fr":
-                msg = "Bonjour, ";
-                break;
-            case "de":
-                msg = "Hallo, ";
-                break;
-        }
-        
+
+        MessageBean msgBean = new MessageBean(lang);
+
+        msg = msgBean.getMsg();
+
         String nome = request.getParameter("nome");
 
-        if(nome==null)
+        if (nome == null)
             nome = "Fulano";
-        
-        msg = msg+nome+"!";
+
+        msg = msg + nome + "!";
 
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -143,7 +133,7 @@ public class HelloServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet HelloServlet</title>");            
+            out.println("<title>Servlet HelloServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet HelloServlet</h1>");

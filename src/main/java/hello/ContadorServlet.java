@@ -19,6 +19,11 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/contador")
 public class ContadorServlet extends HttpServlet {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 7162058227116065776L;
+
     private int contador = 0; // variavel de instância
 
     protected void service(HttpServletRequest request, HttpServletResponse response)

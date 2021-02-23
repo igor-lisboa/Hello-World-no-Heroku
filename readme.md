@@ -9,6 +9,7 @@
 # Adição no projeto
 * Foi adicionado o servlet Contador
     * Esse servlet testa o conceito de que por padrão cada servlet tem apenas 1 instância e que a mesma é compartilhada por todas as threads.
+* Ao invés de informar apenas um alô agora o servlet dá bom dia, boa tarde ou boa noite no idioma selecionado de acordo com a hora atual.
 
 # Fonte interessante para estudo
 * https://www.caelum.com.br/apostila-java-web/servlets

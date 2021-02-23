@@ -6,40 +6,76 @@ package hello;
  * and open the template in the editor.
  */
 
-
 import java.beans.*;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
  * @author viter
  */
 public class MessageBean implements Serializable {
-     
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = -8266471152053172467L;
     private String msg;
-        
-    public MessageBean() {
+
+    public MessageBean(String lang) {
+        setMsg(lang);
     }
-    
+
     public String getMsg() {
         return msg;
     }
-    
+
     public void setMsg(String value) {
-        switch (value){
+        SimpleDateFormat sdf = new SimpleDateFormat("HH");
+        String hrString = sdf.format(new Date());
+
+        int hr = Integer.parseInt(hrString);
+
+        switch (value) {
             case "":
             case "pt":
-                msg = "Alô";
+                if (hr >= 0 && hr <= 11) {
+                    msg = "Bom dia";
+                } else if (hr >= 12 && hr <= 18) {
+                    msg = "Boa tarde";
+                } else {
+                    msg = "Boa noite";
+                }
                 break;
             case "en":
-                msg = "Hello";
+                if (hr >= 0 && hr <= 11) {
+                    msg = "Good morning";
+                } else if (hr >= 12 && hr <= 18) {
+                    msg = "Good afternoon";
+                } else {
+                    msg = "Goodnight";
+                }
                 break;
             case "de":
-                msg = "Hallo";
+                if (hr >= 0 && hr <= 11) {
+                    msg = "Guten morgen";
+                } else if (hr >= 12 && hr <= 18) {
+                    msg = "Guten tag";
+                } else {
+                    msg = "Gute nacht";
+                }
                 break;
             case "fr":
-                msg = "Bonjour";
+                if (hr >= 0 && hr <= 11) {
+                    msg = "Bonjour";
+                } else if (hr >= 12 && hr <= 18) {
+                    msg = "Bon après-midi";
+                } else {
+                    msg = "Bonne nuit";
+                }
                 break;
         }
+        msg = "Hora Atual: " + hrString + " | " + msg + " ";
     }
 }
